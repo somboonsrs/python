@@ -47,4 +47,29 @@ def read_note(filename):
 save_note("notes.txt", "Meeting at 10am\n")
 append_note("notes.txt", "Call John")
 print(read_note("notes.txt"))
+
+
+import json
+
+# dict → JSON string
+data = {
+    "name": "Sombo",
+    "age": 25,
+    "skills": ["Python", "Go", "Java"]
+}
+print(set(data["skills"]))
+json_string = json.dumps(data)
+print(json_string)
+
+# → {"name": "Sombo", "age": 25, "skills": ["Python", "Go", "Java"]}
+
+# สวยขึ้น (indent)
+json_pretty = json.dumps(data, indent=2)
+print(json_pretty)
+
+# JSON string → dict
+json_string = '{"name": "Sombo", "age": 25}'
+data = json.loads(json_string)
+print(data["name"])    # → Sombo
+
   
