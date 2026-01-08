@@ -41,8 +41,8 @@ def append_note(filename, content):
         f.write(content)
 
 def read_note(filename):
-    with open(filename, 'a') as f:
-        return f
+    with open(filename, 'r') as f:
+        return f.read()
 
 save_note("notes.txt", "Meeting at 10am\n")
 append_note("notes.txt", "Call John")
