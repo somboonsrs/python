@@ -72,4 +72,37 @@ json_string = '{"name": "Sombo", "age": 25}'
 data = json.loads(json_string)
 print(data["name"])    # → Sombo
 
-  
+import json
+
+# เขียน JSON file
+data = {
+    "products": [
+        {"id": "P001", "name": "iPhone", "price": 32900},
+        {"id": "P002", "name": "iPad", "price": 19900}
+    ]
+}
+
+with open("products.json", "w", encoding="utf-8") as f:
+    json.dump(data, f, indent=2, ensure_ascii=False)
+
+# อ่าน JSON file
+with open("products.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+print(data["products"][0]["name"])    # → iPhone
+
+import csv
+
+# อ่านแบบ list
+with open("products.csv", "r", encoding="utf-8") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print(row)    # → ['id', 'name', 'price']
+                      # → ['P001', 'iPhone', '32900']
+
+# อ่านแบบ dict (แนะนำ!)
+with open("products.csv", "r", encoding="utf-8") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        print(row)    # → {'id': 'P001', 'name': 'iPhone', 'price': '32900'}
+        print(row["name"])    # → iPhone
